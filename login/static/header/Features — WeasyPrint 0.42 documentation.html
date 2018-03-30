@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://weasyprint.readthedocs.io/en/latest/features.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Features — WeasyPrint 0.42 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="https://weasyprint.readthedocs.io/en/latest/_static/icon.ico">
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="./Features — WeasyPrint 0.42 documentation_files/sphinx_rtd_theme.css" type="text/css">
+  
+
+  
+    <link rel="stylesheet" href="./Features — WeasyPrint 0.42 documentation_files/custom.css" type="text/css">
+  
+        <link rel="index" title="Index" href="https://weasyprint.readthedocs.io/en/latest/genindex.html">
+        <link rel="search" title="Search" href="https://weasyprint.readthedocs.io/en/latest/search.html">
+    <link rel="top" title="WeasyPrint 0.42 documentation" href="https://weasyprint.readthedocs.io/en/latest/index.html">
+        <link rel="next" title="Hacking WeasyPrint" href="https://weasyprint.readthedocs.io/en/latest/hacking.html">
+        <link rel="prev" title="API" href="https://weasyprint.readthedocs.io/en/latest/api.html"> 
+
+  
+  <script async="" src="./Features — WeasyPrint 0.42 documentation_files/analytics.js"></script><script src="./Features — WeasyPrint 0.42 documentation_files/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://weasyprint.readthedocs.io/en/stable/features.html">
+
+<link rel="stylesheet" href="./Features — WeasyPrint 0.42 documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="text/javascript" src="./Features — WeasyPrint 0.42 documentation_files/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'features' 		
+READTHEDOCS_DATA['source_suffix'] = '.rst'
+</script>
+
+<script type="text/javascript" src="./Features — WeasyPrint 0.42 documentation_files/readthedocs-dynamic-include.js"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav" role="document" style="">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://weasyprint.readthedocs.io/en/latest/index.html" class="icon icon-home"> WeasyPrint
+          
+
+          
+            
+            <img src="./Features — WeasyPrint 0.42 documentation_files/logo.png" class="logo">
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://weasyprint.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/install.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/api.html">API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#"><span class="toctree-expand"></span>Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#urls">URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#html">HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#pdf">PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#fonts">Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css"><span class="toctree-expand"></span>CSS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-level-2-revision-1">CSS Level 2 Revision 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#selectors-level-3">Selectors Level 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-text-module-level-3-4">CSS Text Module Level 3 / 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-fonts-module-level-3">CSS Fonts Module Level 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-paged-media-module-level-3">CSS Paged Media Module Level 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-generated-content-for-paged-media-module">CSS Generated Content for Paged Media Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-color-module-level-3">CSS Color Module Level 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-transforms-module-level-1">CSS Transforms Module Level 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-backgrounds-and-borders-module-level-3">CSS Backgrounds and Borders Module Level 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-image-values-and-replaced-content-module-level-3-4">CSS Image Values and Replaced Content Module Level 3 / 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-basic-user-interface-module-level-3">CSS Basic User Interface Module Level 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-values-and-units-module-level-3">CSS Values and Units Module Level 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-multi-column-layout-module">CSS Multi-column Layout Module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/hacking.html">Hacking WeasyPrint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/changelog.html">WeasyPrint changelog</a></li>
+</ul>
+
+            
+          
+        </div>
+      <div id="rtd-gtzrl4md" class="ethical-rtd"><div class="ethical-sidebar"><div class="ethical-content"><a href="https://readthedocs.org/sustainability/click/179/wmaE6IxHJfzG/" class="ethical-image-link"><img src="./Features — WeasyPrint 0.42 documentation_files/saved_resource"></a><div class="ethical-text">Starting a new project? <a href="https://readthedocs.org/sustainability/click/179/wmaE6IxHJfzG/" rel="nofollow" target="_blank">Deploy to DigitalOcean for free with a 60 day trial.</a></div></div><div class="ethical-callout"><small><em><a href="https://readthedocs.org/sustainability/advertising/">Sponsored</a><span> · </span><a href="https://docs.readthedocs.io/en/latest/ethical-advertising.html">Ads served ethically</a></em></small></div></div></div></div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://weasyprint.readthedocs.io/en/latest/index.html">WeasyPrint</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://weasyprint.readthedocs.io/en/latest/index.html">Docs</a> »</li>
+        
+      <li>Features</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/Kozea/WeasyPrint/blob/master/docs/features.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="features">
+<h1>Features<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#features" title="Permalink to this headline">¶</a></h1>
+<p>This page is for WeasyPrint 0.42. See <a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/changelog.html"><span class="doc">changelog</span></a>
+for older versions.</p>
+<div class="section" id="urls">
+<h2>URLs<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#urls" title="Permalink to this headline">¶</a></h2>
+<p>WeasyPrint can read normal files, HTTP, FTP and <a class="reference external" href="http://en.wikipedia.org/wiki/Data_URI_scheme">data URIs</a>. It will follow
+HTTP redirects but more advanced features like cookies and authentication
+are currently not supported, although a custom <a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/tutorial.html#url-fetchers"><span class="std std-ref">url fetcher</span></a> can help.</p>
+</div>
+<div class="section" id="html">
+<h2>HTML<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#html" title="Permalink to this headline">¶</a></h2>
+<p>Many HTML elements are implemented in CSS through the HTML5
+<a class="reference external" href="https://github.com/Kozea/WeasyPrint/blob/master/weasyprint/css/html5_ua.css">User-Agent stylesheet</a>.</p>
+<p>Some elements need special treatment:</p>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">&lt;base&gt;</span></code> element, if present, determines the base for relative URLs.</li>
+<li>CSS stylesheets can be embedded in <code class="docutils literal"><span class="pre">&lt;style&gt;</span></code> elements or linked by
+<code class="docutils literal"><span class="pre">&lt;link</span> <span class="pre">rel=stylesheet&gt;</span></code> elements.</li>
+<li><code class="docutils literal"><span class="pre">&lt;img&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;embed&gt;</span></code> or <code class="docutils literal"><span class="pre">&lt;object&gt;</span></code> elements accept images either
+in raster formats supported by <a class="reference external" href="https://live.gnome.org/GdkPixbuf">GdkPixbuf</a> (including PNG, JPEG, GIF, …)
+or in SVG with <a class="reference external" href="http://cairosvg.org/">CairoSVG</a>. SVG images are not rasterized but rendered
+as vectors in the PDF output.</li>
+</ul>
+<p>HTML <a class="reference external" href="http://www.w3.org/TR/html5/rendering.html#presentational-hints">presentational hints</a> are not supported by default, but most of them can
+be supported:</p>
+<ul class="simple">
+<li>by using the <code class="docutils literal"><span class="pre">--presentational-hints</span></code> CLI parameter, or</li>
+<li>by setting the <code class="docutils literal"><span class="pre">presentational_hints</span></code> parameter of the <code class="docutils literal"><span class="pre">HTML.render</span></code> or
+<code class="docutils literal"><span class="pre">HTML.write_*</span></code> methods to <code class="docutils literal"><span class="pre">True</span></code>.</li>
+</ul>
+<p>Presentational hints include a wide array of attributes that direct styling in
+HTML, including font <code class="docutils literal"><span class="pre">color</span></code> and <code class="docutils literal"><span class="pre">size</span></code>, list attributes like <code class="docutils literal"><span class="pre">type</span></code> and
+<code class="docutils literal"><span class="pre">start</span></code>, various table alignment attributes, and others. If the document
+generated by WeasyPrint is missing some of the features you expect from the
+HTML, try to enable this option.</p>
+</div>
+<div class="section" id="pdf">
+<h2>PDF<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#pdf" title="Permalink to this headline">¶</a></h2>
+<p>In addition to text, raster and vector graphics, WeasyPrint’s PDF files
+can contain hyperlinks, bookmarks and attachments.</p>
+<p>Hyperlinks will be clickable in PDF viewers that support them. They can
+be either internal, to another part of the same document (eg.
+<code class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href="#pdf"&gt;</span></code>) or external, to an URL. External links are resolved
+to absolute URLs: <code class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href="/news/"&gt;</span></code> on the WeasyPrint website would always
+point to <a class="reference external" href="http://weasyprint.org/news/">http://weasyprint.org/news/</a> in PDF files.</p>
+<p>PDF bookmarks are also called outlines and are generally shown in a
+sidebar. Clicking on an entry scrolls the matching part of the document
+into view. By default all <code class="docutils literal"><span class="pre">&lt;h1&gt;</span></code> to <code class="docutils literal"><span class="pre">&lt;h6&gt;</span></code> titles generate bookmarks,
+but this can be controlled with CSS (see <span class="xref std std-ref">bookmarks</span>.)</p>
+<p>Attachments are related files, embedded in the PDF itself. They can be
+specified through <code class="docutils literal"><span class="pre">&lt;link</span> <span class="pre">rel=attachment&gt;</span></code> elements to add resources globally
+or through regular links with <code class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">rel=attachment&gt;</span></code> to attach a resource that
+can be saved by clicking on said link. The <code class="docutils literal"><span class="pre">title</span></code> attribute can be used as
+description of the attachment.</p>
+</div>
+<div class="section" id="fonts">
+<h2>Fonts<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#fonts" title="Permalink to this headline">¶</a></h2>
+<p>WeasyPrint can use any font that Pango can find installed on the system. Fonts
+are automatically embedded in PDF files.</p>
+<p>On Windows and macOS, Pango uses the native font-managing libraries. You can
+use the tools provided by your OS to know which fonts are available. WeasyPrint
+should support any font format that’s supported by the operating system.</p>
+<p>On Linux, Pango uses fontconfig to access fonts. You can list the available
+fonts thanks to the <code class="docutils literal"><span class="pre">fc-list</span></code> command, and know which font is matched by a
+given pattern thanks to <code class="docutils literal"><span class="pre">fc-match</span></code>. Copying a font file into the
+<code class="docutils literal"><span class="pre">~/.local/share/fonts</span></code> or <code class="docutils literal"><span class="pre">~/.fonts</span></code> directory is generally enough to
+install a new font. WeasyPrint should support <a class="reference external" href="https://en.wikipedia.org/wiki/FreeType#File_formats">any font format handled by
+FreeType</a> (any format
+widely used except WOFF2).</p>
+</div>
+<div class="section" id="css">
+<h2>CSS<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css" title="Permalink to this headline">¶</a></h2>
+<p>WeasyPrint supports many of the <a class="reference external" href="https://www.w3.org/Style/CSS/current-work">CSS specifications</a> written by the W3C. You
+will find in this chapter a comprehensive list of the specifications or drafts
+with at least one feature implemented in WeasyPrint.</p>
+<p>The results of some of the test suites provided by the W3C are also available
+at <a class="reference external" href="http://test.weasyprint.org/">test.weasyprint.org</a>. This website uses a tool called <a class="reference external" href="https://github.com/Kozea/WeasySuite">WeasySuite</a> that
+can be useful if you want to implement new features in WeasyPrint.</p>
+<div class="section" id="css-level-2-revision-1">
+<h3>CSS Level 2 Revision 1<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-level-2-revision-1" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://www.w3.org/TR/CSS21/">CSS Level 2 Revision 1</a> specification, best known as CSS&nbsp;2.1, is pretty
+well supported by WeasyPrint. Since version 0.11, it passes the famous <a class="reference external" href="http://www.webstandards.org/files/acid2/test.html">Acid2
+Test</a>.</p>
+<p>The CSS&nbsp;2.1 features listed here are <strong>not</strong> supported:</p>
+<ul class="simple">
+<li>The <a class="reference external" href="http://www.w3.org/TR/CSS21/selector.html#first-line-pseudo">::first-line</a> pseudo-element.</li>
+<li>On tables: <a class="reference external" href="http://www.w3.org/TR/CSS21/tables.html#dynamic-effects">visibility: collapse</a>.</li>
+<li>Minimum and maximum <a class="reference external" href="http://www.w3.org/TR/CSS21/visudet.html#min-max-heights">height</a> on table-related boxes.</li>
+<li>Minimum and maximum <a class="reference external" href="http://www.w3.org/TR/CSS21/visudet.html#min-max-widths">width</a> and <a class="reference external" href="http://www.w3.org/TR/CSS21/visudet.html#min-max-heights">height</a> on page-margin boxes.</li>
+<li>Conforming <a class="reference external" href="http://www.w3.org/TR/CSS21/fonts.html#algorithm">font matching algorithm</a>. Currently <code class="docutils literal"><span class="pre">font-family</span></code>
+is passed as-is to Pango.</li>
+<li>Right-to-left or <a class="reference external" href="http://www.w3.org/TR/CSS21/visuren.html#direction">bi-directional text</a>.</li>
+<li><a class="reference external" href="http://www.w3.org/TR/CSS21/ui.html#system-colors">System colors</a> and <a class="reference external" href="http://www.w3.org/TR/CSS21/fonts.html#propdef-font">system fonts</a>. The former are deprecated in <a class="reference external" href="http://www.w3.org/TR/css3-color/">CSS Color
+Module Level 3</a>.</li>
+</ul>
+<p>To the best of our knowledge, everything else that applies to the
+print media <strong>is</strong> supported. Please report a bug if you find this list
+incomplete.</p>
+</div>
+<div class="section" id="selectors-level-3">
+<h3>Selectors Level 3<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#selectors-level-3" title="Permalink to this headline">¶</a></h3>
+<p>With the exceptions noted here, all <a class="reference external" href="http://www.w3.org/TR/css3-selectors/">Selectors Level 3</a> are supported.</p>
+<p>PDF is generally not interactive. The <code class="docutils literal"><span class="pre">:hover</span></code>, <code class="docutils literal"><span class="pre">:active</span></code>, <code class="docutils literal"><span class="pre">:focus</span></code>,
+<code class="docutils literal"><span class="pre">:target</span></code> and <code class="docutils literal"><span class="pre">:visited</span></code> pseudo-classes are accepted as valid but
+never match anything.</p>
+</div>
+<div class="section" id="css-text-module-level-3-4">
+<h3>CSS Text Module Level 3 / 4<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-text-module-level-3-4" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://www.w3.org/TR/css-text-3/">CSS Text Module Level 3</a> and <a class="reference external" href="https://www.w3.org/TR/css-text-4/">CSS Text Module Level 4</a> are working
+drafts defining “properties for text manipulation” and covering “line breaking,
+justification and alignment, white space handling, and text transformation”.</p>
+<p>Among their features, some are already included in CSS&nbsp;2.1, sometimes with
+missing or different values (<code class="docutils literal"><span class="pre">text-indent</span></code>, <code class="docutils literal"><span class="pre">text-align</span></code>,
+<code class="docutils literal"><span class="pre">letter-spacing</span></code>, <code class="docutils literal"><span class="pre">word-spacing</span></code>, <code class="docutils literal"><span class="pre">text-transform</span></code>, <code class="docutils literal"><span class="pre">white-space</span></code>).</p>
+<p>New properties defined in Level 3 are supported:</p>
+<ul class="simple">
+<li>the <code class="docutils literal"><span class="pre">overflow-wrap</span></code> property replacing <code class="docutils literal"><span class="pre">word-wrap</span></code>;</li>
+<li>the <code class="docutils literal"><span class="pre">full-width</span></code> value of the <code class="docutils literal"><span class="pre">text-transform</span></code> property; and</li>
+<li>the <code class="docutils literal"><span class="pre">tab-space</span></code> property.</li>
+</ul>
+<p><a class="reference external" href="http://www.w3.org/TR/css-2010/#experimental">Experimental</a> properties controling <a class="reference external" href="http://www.w3.org/TR/css3-text/#hyphenation">hyphenation</a> are supported by WeasyPrint:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">hyphens</span></code>,</li>
+<li><code class="docutils literal"><span class="pre">hyphenate-character</span></code>,</li>
+<li><code class="docutils literal"><span class="pre">hyphenate-limit-chars</span></code>, and</li>
+<li><code class="docutils literal"><span class="pre">hyphenate-limit-zone</span></code>.</li>
+</ul>
+<p>To get automatic hyphenation, you to set it to <code class="docutils literal"><span class="pre">auto</span></code>
+<em>and</em> have the <code class="docutils literal"><span class="pre">lang</span></code> HTML attribute set to one of the languages
+<a class="reference external" href="https://github.com/Kozea/Pyphen/tree/master/pyphen/dictionaries">supported by Pyphen</a>.</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="cp">&lt;!doctype html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">en</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+  <span class="nt">html</span> <span class="p">{</span> <span class="k">hyphens</span><span class="p">:</span> <span class="kc">auto</span> <span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+…
+</pre></div>
+</div>
+<p>Automatic hyphenation can be disabled again with the <code class="docutils literal"><span class="pre">manual</span></code> value:</p>
+<div class="highlight-css"><div class="highlight"><pre><span></span><span class="nt">html</span> <span class="p">{</span> <span class="k">hyphens</span><span class="p">:</span> <span class="kc">auto</span> <span class="p">}</span>
+<span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">]</span><span class="p">::</span><span class="nd">after</span> <span class="p">{</span> <span class="k">content</span><span class="p">:</span> <span class="s1">' ['</span> <span class="nb">attr</span><span class="p">(</span><span class="n">href</span><span class="p">)</span> <span class="s1">']'</span><span class="p">;</span> <span class="k">hyphens</span><span class="p">:</span> <span class="kc">manual</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>The other features provided by <a class="reference external" href="https://www.w3.org/TR/css-text-3/">CSS Text Module Level 3</a> are <strong>not</strong>
+supported:</p>
+<ul class="simple">
+<li>the <code class="docutils literal"><span class="pre">line-break</span></code> and <code class="docutils literal"><span class="pre">word-break</span></code> properties;</li>
+<li>the <code class="docutils literal"><span class="pre">start</span></code>, <code class="docutils literal"><span class="pre">end</span></code>, <code class="docutils literal"><span class="pre">match-parent</span></code> and <code class="docutils literal"><span class="pre">start</span> <span class="pre">end</span></code> values of the
+<code class="docutils literal"><span class="pre">text-align</span></code> property;</li>
+<li>the <code class="docutils literal"><span class="pre">text-align-last</span></code> and <code class="docutils literal"><span class="pre">text-justify</span></code> properties; and</li>
+<li>the <code class="docutils literal"><span class="pre">text-indent</span></code> and <code class="docutils literal"><span class="pre">hanging-punctuation</span></code> properties.</li>
+</ul>
+<p>The other features provided by <a class="reference external" href="https://www.w3.org/TR/css-text-4/">CSS Text Module Level 4</a> are <strong>not</strong>
+supported:</p>
+<ul class="simple">
+<li>the <code class="docutils literal"><span class="pre">text-space-collapse</span></code> and <code class="docutils literal"><span class="pre">text-space-trim</span></code> properties;</li>
+<li>the <code class="docutils literal"><span class="pre">text-wrap</span></code>, <code class="docutils literal"><span class="pre">wrap-before</span></code>, <code class="docutils literal"><span class="pre">wrap-after</span></code> and <code class="docutils literal"><span class="pre">wrap-inside</span></code>
+properties;</li>
+<li>the <code class="docutils literal"><span class="pre">pre-wrap-auto</span></code> value of the <code class="docutils literal"><span class="pre">white-space</span></code> property; and</li>
+<li>the <code class="docutils literal"><span class="pre">text-spacing</span></code> property.</li>
+</ul>
+</div>
+<div class="section" id="css-fonts-module-level-3">
+<h3>CSS Fonts Module Level 3<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-fonts-module-level-3" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-fonts-module-level-3">CSS Fonts Module Level 3</a> is a candidate recommendation describing “how
+font properties are specified and how font resources are loaded dynamically”.</p>
+<p>WeasyPrint supports the <code class="docutils literal"><span class="pre">font-size</span></code>, <code class="docutils literal"><span class="pre">font-stretch</span></code>, <code class="docutils literal"><span class="pre">font-style</span></code> and
+<code class="docutils literal"><span class="pre">font-weight</span></code> properties, coming from CSS 2.1.</p>
+<p>WeasyPrint also supports the following font features added in Level 3:
+- <code class="docutils literal"><span class="pre">font-kerning</span></code>,
+- <code class="docutils literal"><span class="pre">font-variant-ligatures</span></code>,
+- <code class="docutils literal"><span class="pre">font-variant-position</span></code>,
+- <code class="docutils literal"><span class="pre">font-variant-caps</span></code>,
+- <code class="docutils literal"><span class="pre">font-variant-numeric</span></code>,
+- <code class="docutils literal"><span class="pre">font-variant-east-asian</span></code>,
+- <code class="docutils literal"><span class="pre">font-feature-settings</span></code>, and
+- <code class="docutils literal"><span class="pre">font-language-override</span></code>.</p>
+<p><code class="docutils literal"><span class="pre">font-family</span></code> is supported. The string is given to Pango that tries to find a
+matching font in a way different from what is defined in the recommendation,
+but that should not be a problem for common use.</p>
+<p>The shorthand <code class="docutils literal"><span class="pre">font</span></code> and <code class="docutils literal"><span class="pre">font-variant</span></code> properties are supported.</p>
+<p>WeasyPrint supports the <code class="docutils literal"><span class="pre">@font-face</span></code> rule on Linux and macOS, but does
+<strong>not</strong> support it on Windows.</p>
+<p>WeasyPrint does <strong>not</strong> support the <code class="docutils literal"><span class="pre">@font-feature-values</span></code> rule and the
+values of <code class="docutils literal"><span class="pre">font-variant-alternates</span></code> other than <code class="docutils literal"><span class="pre">normal</span></code> and
+<code class="docutils literal"><span class="pre">historical-forms</span></code>.</p>
+<p>The <code class="docutils literal"><span class="pre">font-variant-caps</span></code> property is supported but needs the small-caps variant of
+the font to be installed. WeasyPrint does <strong>not</strong> simulate missing small-caps
+fonts.</p>
+</div>
+<div class="section" id="css-paged-media-module-level-3">
+<h3>CSS Paged Media Module Level 3<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-paged-media-module-level-3" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://dev.w3.org/csswg/css3-page/">CSS Paged Media Module Level 3</a> is a working draft including features for
+paged media “describing how:</p>
+<ul class="simple">
+<li>page breaks are created and avoided;</li>
+<li>the page properties such as size, orientation, margins, border, and padding
+are specified;</li>
+<li>headers and footers are established within the page margins;</li>
+<li>content such as page counters are placed in the headers and footers; and</li>
+<li>orphans and widows can be controlled.”</li>
+</ul>
+<p>All the features of this draft are available, including:</p>
+<ul class="simple">
+<li>the <code class="docutils literal"><span class="pre">@page</span></code> rule and the <code class="docutils literal"><span class="pre">:left</span></code>, <code class="docutils literal"><span class="pre">:right</span></code>, <code class="docutils literal"><span class="pre">:first</span></code> and <code class="docutils literal"><span class="pre">:blank</span></code>
+selectors;</li>
+<li>the page margin boxes;</li>
+<li>the page-based counters (with known bugs <a class="reference external" href="https://github.com/Kozea/WeasyPrint/issues/91">#91</a>, <a class="reference external" href="https://github.com/Kozea/WeasyPrint/issues/93">#93</a>, <a class="reference external" href="https://github.com/Kozea/WeasyPrint/issues/289">#289</a>);</li>
+<li>the page <code class="docutils literal"><span class="pre">size</span></code>, <code class="docutils literal"><span class="pre">bleed</span></code> and <code class="docutils literal"><span class="pre">marks</span></code> properties;</li>
+<li>the named pages.</li>
+</ul>
+</div>
+<div class="section" id="css-generated-content-for-paged-media-module">
+<h3>CSS Generated Content for Paged Media Module<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-generated-content-for-paged-media-module" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://www.w3.org/TR/css-gcpm-3/">CSS Generated Content for Paged Media Module</a> (GCPM) is a working draft
+defining “new properties and values, so that authors may bring new techniques
+(running headers and footers, footnotes, leaders, bookmarks) to paged media”.</p>
+<p>Two features from this module have been implemented in WeasyPrint.</p>
+<p>The first feature is <a class="reference external" href="http://www.w3.org/TR/css-gcpm-3/#bookmarks">PDF bookmarks</a>.  Using the <a class="reference external" href="http://www.w3.org/TR/css-2010/#experimental">experimental</a>
+<code class="docutils literal"><span class="pre">bookmark-level</span></code> and <code class="docutils literal"><span class="pre">bookmark-level</span></code> properties, you can add
+bookmarks that will be available in your PDF reader.</p>
+<p>Bookmarks have already been added in the WeasyPrint’s <a class="reference external" href="https://github.com/Kozea/WeasyPrint/blob/master/weasyprint/css/html5_ua.css">user agent stylesheet</a>,
+so your generated documents will automatically have bookmarks on headers (from
+<code class="docutils literal"><span class="pre">&lt;h1&gt;</span></code> to <code class="docutils literal"><span class="pre">&lt;h6&gt;</span></code>). But for example, if you have only one top-level <code class="docutils literal"><span class="pre">&lt;h1&gt;</span></code>
+and do not wish to include it in the bookmarks, add this in your stylesheet:</p>
+<div class="highlight-css"><div class="highlight"><pre><span></span><span class="nt">h1</span> <span class="p">{</span> <span class="k">bookmark-level</span><span class="p">:</span> <span class="kc">none</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>The second feature is <a class="reference external" href="http://www.w3.org/TR/css-gcpm-3/#named-strings">Named strings</a>. You can define strings related to the
+first or last element of a type present on a page, and display these strings in
+page borders. This feature is really useful to add the title of the current
+chapter at the top of the pages of a book for example.</p>
+<p>The named strings can embed static strings, counters, tag contents and tag
+attributes.</p>
+<div class="highlight-css"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">top-center</span> <span class="p">{</span> <span class="nt">content</span><span class="o">:</span> <span class="nt">string</span><span class="o">(</span><span class="nt">chapter</span><span class="o">);</span> <span class="p">}</span>
+<span class="nt">h2</span> <span class="p">{</span> <span class="k">string-set</span><span class="p">:</span> <span class="n">chapter</span> <span class="s2">"Current chapter: "</span> <span class="nf">content</span><span class="p">()</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>The other features of GCPM are <strong>not</strong> implemented:</p>
+<ul class="simple">
+<li>running elements (<code class="docutils literal"><span class="pre">running()</span></code> and <code class="docutils literal"><span class="pre">element()</span></code>);</li>
+<li>footnotes (<code class="docutils literal"><span class="pre">float:</span> <span class="pre">footnote</span></code>, <code class="docutils literal"><span class="pre">footnote-display</span></code>, <code class="docutils literal"><span class="pre">footnote</span></code> counter,
+<code class="docutils literal"><span class="pre">::footnote-call</span></code>, <code class="docutils literal"><span class="pre">::footnote-marker</span></code>, <code class="docutils literal"><span class="pre">@footnote</span></code> rule,
+<code class="docutils literal"><span class="pre">footnote-policy</span></code>);</li>
+<li>page selectors and page groups (<code class="docutils literal"><span class="pre">:nth()</span></code> pseudo-class);</li>
+<li>leaders (<code class="docutils literal"><span class="pre">content:</span> <span class="pre">leader()</span></code>);</li>
+<li>cross-references (<code class="docutils literal"><span class="pre">target-counter()</span></code>, <code class="docutils literal"><span class="pre">target-counters()</span></code> and
+<code class="docutils literal"><span class="pre">target-text()</span></code>);</li>
+<li>bookmark states (<code class="docutils literal"><span class="pre">bookmark-state</span></code>).</li>
+</ul>
+</div>
+<div class="section" id="css-color-module-level-3">
+<h3>CSS Color Module Level 3<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-color-module-level-3" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://www.w3.org/TR/css3-color/">CSS Color Module Level 3</a> is a recommandation defining “CSS properties
+which allow authors to specify the foreground color and opacity of an
+element”. Its main goal is to specify how colors are defined, including color
+keywords and the <code class="docutils literal"><span class="pre">#rgb</span></code>, <code class="docutils literal"><span class="pre">#rrggbb</span></code>, <code class="docutils literal"><span class="pre">rgb()</span></code>, <code class="docutils literal"><span class="pre">rgba()</span></code>, <code class="docutils literal"><span class="pre">hsl()</span></code>,
+<code class="docutils literal"><span class="pre">hsla()</span></code> syntaxes. Opacity and alpha compositing are also defined in this
+document.</p>
+<p>This recommandation is fully implemented in WeasyPrint, except the deprecated
+System Colors.</p>
+</div>
+<div class="section" id="css-transforms-module-level-1">
+<h3>CSS Transforms Module Level 1<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-transforms-module-level-1" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://dev.w3.org/csswg/css3-transforms/">CSS Transforms Module Level 1</a> working draft “describes a coordinate
+system within each element is positioned. This coordinate space can be modified
+with the transform property. Using transform, elements can be translated,
+rotated and scaled in two or three dimensional space.”</p>
+<p>WeasyPrint supports the <code class="docutils literal"><span class="pre">transform</span></code> and <code class="docutils literal"><span class="pre">transform-origin</span></code> properties, and
+all the 2D transformations (<code class="docutils literal"><span class="pre">matrix</span></code>, <code class="docutils literal"><span class="pre">rotate</span></code>, <code class="docutils literal"><span class="pre">translate(X|Y)?</span></code>,
+<code class="docutils literal"><span class="pre">scale(X|Y)?</span></code>, <code class="docutils literal"><span class="pre">skew(X|Y)?</span></code>).</p>
+<p>WeasyPrint does <strong>not</strong> support the <code class="docutils literal"><span class="pre">transform-style</span></code>, <code class="docutils literal"><span class="pre">perspective</span></code>,
+<code class="docutils literal"><span class="pre">perspective-origin</span></code> and <code class="docutils literal"><span class="pre">backface-visibility</span></code> properties, and all the 3D
+transformations (<code class="docutils literal"><span class="pre">matrix3d</span></code>, <code class="docutils literal"><span class="pre">rotate(3d|X|Y|Z)</span></code>, <code class="docutils literal"><span class="pre">translate(3d|Z)</span></code>,
+<code class="docutils literal"><span class="pre">scale(3d|Z)</span></code>).</p>
+</div>
+<div class="section" id="css-backgrounds-and-borders-module-level-3">
+<h3>CSS Backgrounds and Borders Module Level 3<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-backgrounds-and-borders-module-level-3" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-backgrounds-and-borders-module-level-3">CSS Backgrounds and Borders Module Level 3</a> is a candidate recommandation
+defining properties dealing “with the decoration of the border area and with
+the background of the content, padding and border areas”.</p>
+<p>The <a class="reference external" href="http://www.w3.org/TR/css3-background/#borders">border part</a> of this module is supported, as it is already included in
+the the CSS&nbsp;2.1 specification.</p>
+<p>WeasyPrint supports the <a class="reference external" href="http://www.w3.org/TR/css3-background/#backgrounds">background part</a> of this module (allowing multiple
+background layers per box), including the <code class="docutils literal"><span class="pre">background</span></code>, <code class="docutils literal"><span class="pre">background-color</span></code>,
+<code class="docutils literal"><span class="pre">background-image</span></code>, <code class="docutils literal"><span class="pre">background-repeat</span></code>, <code class="docutils literal"><span class="pre">background-attachment</span></code>,
+<code class="docutils literal"><span class="pre">background-position</span></code>, <code class="docutils literal"><span class="pre">background-clip</span></code>, <code class="docutils literal"><span class="pre">background-origin</span></code> and
+<code class="docutils literal"><span class="pre">background-size</span></code> properties.</p>
+<p>WeasyPrint also supports the <a class="reference external" href="http://www.w3.org/TR/css3-background/#corners">rounded corners part</a> of this module, including
+the <code class="docutils literal"><span class="pre">border-radius</span></code> property.</p>
+<p>WeasyPrint does <strong>not</strong> support the <a class="reference external" href="http://www.w3.org/TR/css3-background/#border-images">border images part</a> of this module,
+including the <code class="docutils literal"><span class="pre">border-image</span></code>, <code class="docutils literal"><span class="pre">border-image-source</span></code>,
+<code class="docutils literal"><span class="pre">border-image-slice</span></code>, <code class="docutils literal"><span class="pre">border-image-width</span></code>, <code class="docutils literal"><span class="pre">border-image-outset</span></code> and
+<code class="docutils literal"><span class="pre">border-image-repeat</span></code> properties.</p>
+<p>WeasyPrint does <strong>not</strong> support the <a class="reference external" href="http://www.w3.org/TR/css3-background/#misc">box shadow part</a> of this module,
+including the <code class="docutils literal"><span class="pre">box-shadow</span></code> property. This feature has been implemented in a
+<a class="reference external" href="https://github.com/Kozea/WeasyPrint/pull/149">git branch</a> that is not released, as it relies on raster implementation of
+shadows.</p>
+</div>
+<div class="section" id="css-image-values-and-replaced-content-module-level-3-4">
+<h3>CSS Image Values and Replaced Content Module Level 3 / 4<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-image-values-and-replaced-content-module-level-3-4" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://www.w3.org/TR/css3-images/">Image Values and Replaced Content Module Level 3</a> is a candidate
+recommandation introducing “additional ways of representing 2D images, for
+example as a list of URIs denoting fallbacks, or as a gradient”, defining
+“several properties for manipulating raster images and for sizing or
+positioning replaced elements” and “generic sizing algorithm for replaced
+elements”.</p>
+<p>The <a class="reference external" href="http://www.w3.org/TR/css4-images/">Image Values and Replaced Content Module Level 4</a> is a working draft on
+the same subject.</p>
+<p>The <code class="docutils literal"><span class="pre">linear-gradient()</span></code>, <code class="docutils literal"><span class="pre">radial-gradient()</span></code> and
+<code class="docutils literal"><span class="pre">repeating-radial-gradient()</span></code> properties are supported as background images.</p>
+<p>The the <code class="docutils literal"><span class="pre">url()</span></code> notation is supported, but the <code class="docutils literal"><span class="pre">image()</span></code> notation is
+<strong>not</strong> supported for background images.</p>
+<p>The <code class="docutils literal"><span class="pre">from-image</span></code> and <code class="docutils literal"><span class="pre">snap</span></code> values of the <code class="docutils literal"><span class="pre">image-resolution</span></code> property are
+<strong>not</strong> supported, but the <code class="docutils literal"><span class="pre">resolution</span></code> value is supported.</p>
+<p>The <code class="docutils literal"><span class="pre">image-rendering</span></code> property is supported.</p>
+<p>The <code class="docutils literal"><span class="pre">image-orientation</span></code>, <code class="docutils literal"><span class="pre">object-fit</span></code> and <code class="docutils literal"><span class="pre">object-position</span></code> are <strong>not</strong>
+supported.</p>
+</div>
+<div class="section" id="css-basic-user-interface-module-level-3">
+<h3>CSS Basic User Interface Module Level 3<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-basic-user-interface-module-level-3" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://www.w3.org/TR/css-ui-3/">CSS Basic User Interface Module Level 3</a> also known as CSS3&nbsp;UI is a
+candidate recommandation describing “CSS properties which enable authors to
+style user interface related properties and values.”</p>
+<p>Only one new property defined in this document is implemented in WeasyPrint:
+the <code class="docutils literal"><span class="pre">box-sizing</span></code> property.</p>
+<p>Some of the properties do not apply for WeasyPrint: <code class="docutils literal"><span class="pre">cursor</span></code>, <code class="docutils literal"><span class="pre">resize</span></code>,
+<code class="docutils literal"><span class="pre">caret-color</span></code>, <code class="docutils literal"><span class="pre">nav-(up|right|down|left)</span></code>.</p>
+<p>The other properties are <strong>not</strong> implemented: <code class="docutils literal"><span class="pre">outline-offset</span></code> and
+<code class="docutils literal"><span class="pre">text-overflow</span></code>.</p>
+</div>
+<div class="section" id="css-values-and-units-module-level-3">
+<h3>CSS Values and Units Module Level 3<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-values-and-units-module-level-3" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://www.w3.org/TR/css3-values/">CSS Values and Units Module Level 3</a> defines various units and
+keywords used in “value definition field of each CSS property”.</p>
+<p>The <code class="docutils literal"><span class="pre">initial</span></code> and <code class="docutils literal"><span class="pre">inherit</span></code> CSS-wide keywords are supported, but the
+<code class="docutils literal"><span class="pre">unset</span></code> keyword is <strong>not</strong> supported.</p>
+<p>Quoted strings, URLs and numeric data types are supported.</p>
+<p>Font-related lengths (<code class="docutils literal"><span class="pre">em</span></code>, <code class="docutils literal"><span class="pre">ex</span></code>, <code class="docutils literal"><span class="pre">ch</span></code>, <code class="docutils literal"><span class="pre">rem</span></code>), absolute lengths
+(<code class="docutils literal"><span class="pre">cm</span></code>, <code class="docutils literal"><span class="pre">mm</span></code>, <code class="docutils literal"><span class="pre">q</span></code>, <code class="docutils literal"><span class="pre">in</span></code>, <code class="docutils literal"><span class="pre">pt</span></code>, <code class="docutils literal"><span class="pre">pc</span></code>, <code class="docutils literal"><span class="pre">px</span></code>), angles (<code class="docutils literal"><span class="pre">rad</span></code>,
+<code class="docutils literal"><span class="pre">grad</span></code>, <code class="docutils literal"><span class="pre">turn</span></code>, <code class="docutils literal"><span class="pre">deg</span></code>), resolutions (<code class="docutils literal"><span class="pre">dpi</span></code>, <code class="docutils literal"><span class="pre">dpcm</span></code>, <code class="docutils literal"><span class="pre">dppx</span></code>) are
+supported.</p>
+<p>The <code class="docutils literal"><span class="pre">attr()</span></code> functional notation is allowed in the <code class="docutils literal"><span class="pre">content</span></code> and
+<code class="docutils literal"><span class="pre">string-set</span></code> properties.</p>
+<p>Viewport-percentage lengths (<code class="docutils literal"><span class="pre">vw</span></code>, <code class="docutils literal"><span class="pre">vh</span></code>, <code class="docutils literal"><span class="pre">vmin</span></code>, <code class="docutils literal"><span class="pre">vmax</span></code>) are <strong>not</strong>
+supported.</p>
+</div>
+<div class="section" id="css-multi-column-layout-module">
+<h3>CSS Multi-column Layout Module<a class="headerlink" href="https://weasyprint.readthedocs.io/en/latest/features.html#css-multi-column-layout-module" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://www.w3.org/TR/css3-multicol/">CSS Multi-column Layout Module</a> “describes multi-column layouts in CSS, a
+style sheet language for the web. Using functionality described in the
+specification, content can be flowed into multiple columns with a gap and a
+rule between them.”</p>
+<p>Simple multi-column layouts are supported in WeasyPrint. Features such as
+constrained height, spanning columns or column breaks are <strong>not</strong>
+supported. Pagination and overflow are not seriously tested.</p>
+<p>The <code class="docutils literal"><span class="pre">column-width</span></code> and <code class="docutils literal"><span class="pre">column-count</span></code> properties, and the <code class="docutils literal"><span class="pre">columns</span></code>
+shorthand property are supported.</p>
+<p>The <code class="docutils literal"><span class="pre">column-gap</span></code>, <code class="docutils literal"><span class="pre">column-rule-color</span></code>, <code class="docutils literal"><span class="pre">column-rule-style</span></code> and
+<code class="docutils literal"><span class="pre">column-rule-width</span></code> properties, and the <code class="docutils literal"><span class="pre">column-rule</span></code> shorthand property
+are supported.</p>
+<p>The <code class="docutils literal"><span class="pre">break-before</span></code>, <code class="docutils literal"><span class="pre">break-after</span></code> and <code class="docutils literal"><span class="pre">break-inside</span></code> properties are
+<strong>not</strong> supported.</p>
+<p>The <code class="docutils literal"><span class="pre">column-span</span></code> property is <strong>not</strong> supported.</p>
+<p>The <code class="docutils literal"><span class="pre">column-fill</span></code> property is supported, with a column balancing algorithm
+that should be efficient with simple cases.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://weasyprint.readthedocs.io/en/latest/hacking.html" class="btn btn-neutral float-right" title="Hacking WeasyPrint" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://weasyprint.readthedocs.io/en/latest/api.html" class="btn btn-neutral" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr><div><div id="rtd-7vftzr57" class="ethical-rtd"></div></div>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2011-2017, Simon Sapin and contributors, see AUTHORs.
+      
+        <span class="commit">
+          Revision <code>3b52fb05</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="http://weasyprint.readthedocs.io/en/latest/features.html">latest</a></dd>
+         </strong> 
+        
+        
+        <dd><a href="http://weasyprint.readthedocs.io/en/stable/features.html">stable</a></dd>
+        
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="https://readthedocs.org/projects/weasyprint/downloads/pdf/latest/">PDF</a></dd>
+        
+        <dd><a href="https://readthedocs.org/projects/weasyprint/downloads/htmlzip/latest/">HTML</a></dd>
+        
+        <dd><a href="https://readthedocs.org/projects/weasyprint/downloads/epub/latest/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://readthedocs.org/projects/weasyprint/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/weasyprint/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/weasyprint/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/Kozea/WeasyPrint/blob/master/docs/features.rst">View</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/Kozea/WeasyPrint/edit/master/docs/features.rst">Edit</a>
+        </dd>
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/weasyprint/search/" method="get">
+              <input type="text" name="q" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>.
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.42',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="./Features — WeasyPrint 0.42 documentation_files/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="./Features — WeasyPrint 0.42 documentation_files/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="./Features — WeasyPrint 0.42 documentation_files/underscore.js"></script>
+      <script type="text/javascript" src="./Features — WeasyPrint 0.42 documentation_files/doctools.js"></script>
+      <script type="text/javascript" src="./Features — WeasyPrint 0.42 documentation_files/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+
+</body></html>

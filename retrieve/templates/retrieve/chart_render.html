@@ -1,0 +1,79 @@
+{% extends 'login/header.html' %}
+{% block content %}
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	zoomEnabled:true,
+	title: {
+		text: "Params Vs time"
+	},
+	axisX: {
+		valueFormatString: "YYYY MM DD"
+	},
+	axisY2: {
+		title: "",
+		prefix: "",
+		suffix: ""
+	},
+	toolTip: {
+		shared: true
+	},
+	legend: {
+		cursor: "pointer",
+		verticalAlign: "top",
+		horizontalAlign: "center",
+		dockInsidePlotArea: true,
+		itemclick: toogleDataSeries
+	},
+	data:  [
+
+		{% for item in chart_data %}
+		{
+			type: "line",
+			axisYType: "secondary",
+			name: "{{item.name}}",
+			showInLegend: true,
+			markerSize: 0,
+			yValueFormatString: ""	,
+			dataPoints : [
+
+			{% for li in item.dataPoints %}
+			{
+				x: new Date("{{li.x}}"),
+				y:{{li.y}},
+				// label:"{{ li.label }}",
+			},
+			{% endfor %}
+
+			]
+
+
+
+		},
+		{% endfor %}
+
+	]
+});
+chart.render();
+
+function toogleDataSeries(e){
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	} else{
+		e.dataSeries.visible = true;
+	}
+	chart.render();
+}
+
+}
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+{% endblock %}

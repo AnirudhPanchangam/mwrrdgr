@@ -1,0 +1,58 @@
+<html>
+<head>
+  
+  <title>Test</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+    }
+    <style>
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+  </style>
+</head>
+<body>
+  <h1>Test Template</h1>
+
+  
+  <table id="customers">
+    <tr><th>Numbers</th></tr>
+  {% for paragraph in paragraphs %}  
+    <tr><td><p>{{ paragraph }}</p></td></tr>
+    
+  {% endfor %}
+</table>
+{% load static %}
+  
+   <img src= "{% static "chart.png" %}" alt="img" >
+
+
+
+</table>
+</body>
+</html>

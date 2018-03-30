@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Water Insights</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+       <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{% static "assets/css/bootstrap.min.css" %}"  rel="stylesheet" />
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="{% static "assets/css/light-bootstrap-dashboard.css" %}" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <!-- <link href="{% static "assets/css/demo.css" %}" rel="stylesheet" /> -->
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="{% static "assets/css/pe-icon-7-stroke.css" %}" rel="stylesheet" />
+    
+</head>
+<body>
+
+
+<div class="wrapper">
+    <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                Noobsters
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="">
+                        <i class="pe-7s-home"></i>
+                        <p>HOME</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="pe-7s-note2"></i>
+                        <p>Tabular View</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="pe-7s-graph2"></i>
+                        <p>Graphical View</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="">
+                        <i class="pe-7s-file"></i>
+                        <p>Generate PDF</p>
+                    </a>
+                </li>
+              {% if user.is_authenticated  %}
+              {% ifequal user.groups.all.0 'private_organization' %}
+                <li>
+                    <a href="">
+                        <i class="pe-7s-upload"></i>
+                        <p>Upload Data</p>
+                    </a>
+                </li>
+               {% endifequal %}
+	       {% ifequal user.groups.all.0 'government_official'%}
+	         <li>
+                    <a href="">
+                        <i class="pe-7s-upload"></i>
+                        <p>Verify Data</p>
+                    </a>
+                </li>
+           
+           {% endifequal %}
+           {% endif %}
+            </ul>
+    	</div>
+    </div>
+     <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div>
+                        Water Insights
+                    </div>
+                    </div>
+                    <div class="collapse navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+                  
+                        {% if user.is_authenticated %}
+                          <li>
+                            <a href="#">
+                                Log out
+                            </a>
+                        </li>
+                      {% else %}
+                          <li>
+                            <a href="#">
+                                Log In
+                            </a>
+                        </li>
+                      {% endif %}
+                    </ul> 
+                  </div>
+            </div>
+        </nav>
+{% block content %}
+
+
+{% endblock %}
+ <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                                Reference
+                        </li>
+                        <li>
+                            <a href="https://scclmines.com/env/DOCS/Surface%20Water%20Standards.pdf">
+                                Bureau of Indian Standards
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3482709/">
+                                ICMR Standards
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.moef.nic.in/sites/default/files/nlcp/B%20-%20Water%20Quality/B-30.pdf">
+                               Weighted Arithmetic WQI Method
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; 2018 MRRDGR
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+</html>

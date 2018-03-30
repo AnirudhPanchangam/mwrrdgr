@@ -1,0 +1,218 @@
+<html>
+<head>
+  {% load static %}
+<title>PDF view</title>
+<style>
+    body {
+      background-color: #b0e0e6 ;
+    }
+</style>
+<style>
+.fixed-header, .fixed-footer{
+        width: 100%;
+        position: fixed;        
+        background: black;
+        padding: 10px 0;
+	width:100%;
+        color: white;
+}
+.fixed-header{
+top: 0;
+width:100%;
+}
+.fixed-footer{
+bottom: 0;
+width:100%;
+}
+.container{
+width: 100%;
+margin: 0 auto; 
+}    
+img {
+    max-width: 100%;
+    height: auto;
+}
+.a{
+height: 200px;
+width: auto;
+top: 50%;
+left: 60%;
+position: absolute;   
+margin-top: -100px;
+margin-left: -200px;
+}
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    /*padding: 8px;*/
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+</style>
+</head>
+
+<body>
+<page size="A4">
+
+<div class="fixed-header">
+<div class="container">
+<img src="{% static "header/logo.png" %}" width="30" height="30" ></div>
+</div>
+
+<br><br><br>
+
+<h1 class="a">ANNUAL WATER QUALITY INDEX REPORT -2018</h1>
+
+<div class="fixed-footer">
+<div class="container">copyright@MRRDGR</div>        
+</div>
+
+
+<!-- <p style="page-break-after: always;">&nbsp;</p> -->
+
+
+</page>
+
+<page>
+
+<div class="fixed-header">
+<div class="container">
+<img src="{% static "header/logo.png" %}"width="30" height="30" alt="img"></div>
+</div>
+
+<p style="page-break-before: always;">&nbsp;</p>
+<br><br><br>
+<h1 align="center">Recent Observation of the WQI </h1>
+<lable>Water Body :</lable>
+<br>
+<lable>Observation Date:</lable>
+<br>
+<lable>Weighted Arithmetic Index Method</lable>
+
+
+<br><br>
+<table id="customers">
+<th>Date</th>
+        <th>pH val </th>
+        <th>Dissolved O2</th>
+        <th>BOD</th>
+        <th>Calcium</th>
+        <th>Magnesium</th>
+        <th>Sulphates</th>
+        <th>Nitrates</th>
+        <!-- <th>Electrical conductivity</th> -->
+        <!-- <th>Total dissolved solids</th> -->
+        <th>TSS</th>
+        <!-- <th>Total Hardness</th> -->
+        <!-- <th>Total Alkalinity</th> -->
+        <th>Quality Index</th>
+
+        {% for item in obj %}
+        <tr>
+            <td>{{ item.date }}</td>
+            <td>{{ item.ph_val }}</td>
+            <td>{{ item.dissolved_oxygen }}</td>
+            <td>{{ item.biological_oxygen_demand }}</td>
+            <td>{{ item.calcium }}</td>
+            <td>{{ item.magnesium }}</td>
+            <td>{{ item.sulphate }}</td>
+            <td>{{ item.nitrate }}</td>
+            <!-- <td>{{ item.electrical_conductivity }}</td> -->
+            <!-- <td>{{ item.total_dissolved_solids }}</td> -->
+            <td>{{ item.total_suspended_solids }}</td>
+            <!-- <td>{{ item.total_hardness }}</td> -->
+            <!-- <td>{{ item.total_alkalinity }}</td> -->
+            {% if item.quality_index < 150 %}
+            <td style="background-color:green">{{ item.quality_index }}</td>
+            {% else %}
+            <td style="background-color:red" >{{ item.quality_index }}</td>
+            {% endif %}
+
+
+    </tr>
+
+
+
+
+        {% endfor %}
+</table>
+        
+
+
+<br>
+
+<table border="border">
+<caption align="center">REFERENCE</caption>
+<tr><th>Water Quality Index Level</th>
+<th>Water Quality Status</th>
+</tr>
+<tr><td>0-25</td>
+<td>Excellent water quality</td>
+</tr>
+<tr><td>26-50</td>
+<td>Good water quality</td>
+</tr>
+<tr><td>51-75</td>
+<td>Poor water quality</td>
+</tr>
+<tr><td>76-100</td>
+<td>Very Poor water quality</td>
+</tr>
+<tr><td>&gt; 100</td>
+<td>Unsuitable for drinking</td>
+</tr>
+</table>
+
+<div class="fixed-footer">
+<div class="container">copyright@MRRDGR</div>        
+</div>
+
+
+<p style="page-break-after: always;">&nbsp;</p>
+</page>
+
+<page>
+
+
+<div class="fixed-header">
+<div class="container">
+<img src="{% static "header/logo.png" %}" width="30" height="30" alt="img"></div>
+</div>
+
+<!-- <p style="page-break-before: always;">&nbsp;</p> -->
+
+<br>
+<br><br><br><br><br><br><br><br><br>
+<h1 align="center">Graphical View</h1>
+
+<img src= "{% static "chart.png" %}" alt="img" >
+<pre>The above graph represents the Water Quality Index of the water body over the years.</pre>
+
+<div class="fixed-footer">
+<div class="container">copyright@MRRDGR</div>        
+</div>
+
+</page>
+
+
+
+
+
+</body>
+</html>

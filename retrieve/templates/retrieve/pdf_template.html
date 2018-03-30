@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Generated report of {{ name }}</title>
+
+
+	    <style>
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    /*padding: 8px;*/
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+</head>
+<body>
+
+
+
+{% if obj %}
+<h1 align="center">Generated Report of {{ name }}</h1>
+
+<table id="customers">
+	<!-- <tr><th>Date</th>
+		{% for item in obj %}
+		<td>{{ item.date }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>pH val</th>
+		{% for item in obj %}
+		<td>{{ item.ph_val }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Dissolved Oxygen</th>
+		{% for item in obj %}
+		<td>{{ item.dissolved_oxygen }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Biological oxygen demand</th>
+		{% for item in obj %}
+		<td>{{ item.biological_oxygen_demand }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Calcium</th>
+		{% for item in obj %}
+		<td>{{ item.calcium }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Magnesium</th>
+		{% for item in obj %}
+		<td>{{ item.magnesium }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Sulphates</th>
+		{% for item in obj %}
+		<td>{{ item.sulphate }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Nitrates</th>
+		{% for item in obj %}
+		<td>{{ item.nitrate }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Electrical conductivity</th>
+		{% for item in obj %}
+		<td>{{ item.electrical_conductivity }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Total dissolved solids</th>
+		{% for item in obj %}
+		<td>{{ item.total_dissolved_solids }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Total Suspended Solids</th>
+		{% for item in obj %}
+		<td>{{ item.total_suspended_solids }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Total Hardness</th>
+		{% for item in obj %}
+		<td>{{ item.total_hardness }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Total Alkalinity</th>
+		{% for item in obj %}
+		<td>{{ item.total_alkalinity }}</td>
+		{% endfor %}
+		</tr>
+		<tr><th>Quality Index</th>
+		{% for item in obj %}
+		{% if item.quality_index < 150 %}
+		<td style="background-color:green">{{ item.quality_index }}</td>
+		{% else %}
+		<td style="background-color:red" >{{ item.quality_index }}</td>
+		{% endif %}
+		{% endfor %}
+		</tr> -->
+
+		<th>Date</th>
+		<th>pH val </th>
+		<th>Dissolved O2</th>
+		<th>BOD</th>
+		<th>Calcium</th>
+		<th>Magnesium</th>
+		<th>Sulphates</th>
+		<th>Nitrates</th>
+		<!-- <th>Electrical conductivity</th> -->
+		<!-- <th>Total dissolved solids</th> -->
+		<th>TSS</th>
+		<!-- <th>Total Hardness</th> -->
+		<!-- <th>Total Alkalinity</th> -->
+		<th>Quality Index</th>
+
+		{% for item in obj %}
+		<tr>
+			<td>{{ item.date }}</td>
+			<td>{{ item.ph_val }}</td>
+			<td>{{ item.dissolved_oxygen }}</td>
+			<td>{{ item.biological_oxygen_demand }}</td>
+			<td>{{ item.calcium }}</td>
+			<td>{{ item.magnesium }}</td>
+			<td>{{ item.sulphate }}</td>
+			<td>{{ item.nitrate }}</td>
+			<!-- <td>{{ item.electrical_conductivity }}</td> -->
+			<!-- <td>{{ item.total_dissolved_solids }}</td> -->
+			<td>{{ item.total_suspended_solids }}</td>
+			<!-- <td>{{ item.total_hardness }}</td> -->
+			<!-- <td>{{ item.total_alkalinity }}</td> -->
+			{% if item.quality_index < 150 %}
+			<td style="background-color:green">{{ item.quality_index }}</td>
+			{% else %}
+			<td style="background-color:red" >{{ item.quality_index }}</td>
+			{% endif %}
+
+
+	</tr>
+
+
+
+
+		{% endfor %}
+
+		
+
+</table>
+
+{% else %}
+<h2 align = "center">No Report to display</h2>
+
+{% endif %}
+
+
+
+</body>
+</html>

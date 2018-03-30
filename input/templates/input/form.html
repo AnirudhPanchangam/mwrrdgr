@@ -1,0 +1,22 @@
+{%extends 'login/header.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<h2 align="center"> Enter the observed data </h2>
+<div class = "container">
+	<form action="/input/in/" method="post">
+{% csrf_token %}
+<div class="form-group">
+	<table class = "table-dark table-hover">
+{{form.as_table}}
+</table>
+</div>
+<input type="submit" name="submit" class="btn btn-primary">
+</form>
+</div>
+
+{%endblock%}

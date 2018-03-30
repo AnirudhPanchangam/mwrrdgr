@@ -1,0 +1,30 @@
+{% extends "login/header.html" %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<h2 align="center">Select Parameters to generate a PDF report</h2>
+<div class="container">
+	<div class="row justify-content-center">
+
+
+<form action="" method="POST">
+	{% csrf_token %}
+<table class="table-dark table-hover">
+	
+{{ form.as_table }}
+
+
+</table>
+
+</div>
+<br>
+<div class="row justify-content-center">
+
+<br><br>
+<input type="submit" name="Generate PDF" class="btn btn-primary">
+</form>
+</div>
+</div>
+{% endblock %}

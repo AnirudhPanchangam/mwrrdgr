@@ -1,0 +1,41 @@
+{% extends "login/header.html" %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+<div class="table-responsive">
+<table class="table table-sm table-dark">
+<tr>
+<th>Ph</th><th>Dissolved Oxygen</th></tr>
+
+{% for item in pending_data %}
+<tr><td>{{ item.ph_val }}  </td><td>{{ item.dissolved_oxygen }}</td></tr>
+{% endfor %}
+
+</table>
+
+</div>
+<div class = "container">
+ <div class="form-group">
+    <label for="exampleFormControlSelect1">Label</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>Potable</option>
+      <option>Agricultural</option>
+      <option>Bathing</option>
+      <option>Industrial</option>
+      <option>Un-useable</option>
+    </select>
+  </div>
+<div class="form-group">
+	<div class = "container">
+    <label for="exampleFormControlTextarea1">Comments</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div></div>
+  
+  
+<button type="button" class="btn btn-primary">Validate</button>
+<button type="button" class="btn btn-primary">Send for Re-evaluation</button>
+
+{% endblock %}

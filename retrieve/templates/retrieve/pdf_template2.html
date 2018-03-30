@@ -1,0 +1,287 @@
+<html>
+<head>
+    {% load static %}
+    
+  
+<title>PDF view</title>
+<style>
+    body {
+      background-color: #b0e0e6 ;
+    }
+</style>
+<style>
+@page{
+    margin-bottom:27px;
+}
+caption {
+  font-weight: bold;
+  }
+div.container {
+    width: 100%;
+    border: 1px s  width: 100%;
+}
+
+header, footer {
+   
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: left;
+    position:absolute;
+
+}
+body {
+   
+   margin-left:0.25cm; margin-right:0.25cm;
+}
+header {top: 0px;position:fixed;}
+footer {bottom: 0px;position:fixed;}
+
+header{
+top: 0;
+width: 97%;
+}
+footer{
+bottom: 0;
+width: 97%;
+}
+table, th, td {
+    border: 1px solid black;
+} 
+
+.a{
+height: 200px;
+width: auto;
+top: 50%;
+left: 40%;
+position: absolute;   
+margin-top: -100px;
+margin-left: -200px;
+}
+
+.b{
+height: 200px;
+width: auto;
+top: 55%;
+left: 67%;
+position: absolute;   
+margin-top: -100px;
+margin-left: -200px;
+}
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+}
+#customers table{ page-break-inside:auto;}
+#customers tr{ page-break-inside:avoid;page-break-after:always;}
+#customers th{padding-top:2.4cm; vertical-align: bottom;}
+#customers thead { display:table-header-group;}
+
+
+#customers td, #customers th {
+    border: 1px solid  #000000;
+    /*padding: 8px;*/
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    
+    
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+</style>
+
+</head>
+
+<body >
+
+
+<page size="A4">
+
+<header>
+<div class="container">
+<img src="{% static "header/logo.png" %}"  width="30" height="30" >
+</div>
+</header>
+
+
+<br><br><br>
+
+<h1 class="a">WATER QUALITY INDEX </h1>
+<h1 class="b">REPORT -2018</h1>
+<footer>
+copyright@MRRDGR        
+</footer>
+
+
+<p style="page-break-after: always;"></p>
+
+</page>
+
+<page size="A4">
+
+<header>
+<div class="container">
+<img src="{% static "header/logo.png" %}"  width="30" height="30" >
+</div>
+</header>
+<br>
+<br>
+<br><br><br><br>
+<h1 style="text-align:center">Determination of Water Quality Index</h1>
+<br><br>
+<lable>Water Body : {{water_body}}</lable>
+<br>
+
+<lable>Report Generated on:{{ddate}}
+</lable>
+<br>
+<lable>Weighted Arithmetic Index Method</lable>
+<br>
+<br>
+<indent>Except pH ,all the parameters are in mg/L unit and the standards taken are recommended by ICMR/BIS.</indent> 
+<br>
+<br>
+<br>
+<table style="width:100%;float:center;" >
+<caption style="text-align:center;">REFERENCE</caption>
+<tr><th>Water Quality Index Level</th>
+<th>Water Quality Status</th>
+</tr>
+<tr><td>0-25</td>
+<td>Excellent water quality</td>
+</tr>
+<tr><td>26-50</td>
+<td>Good water quality</td>
+</tr>
+<tr><td>51-75</td>
+<td>Poor water quality</td>
+</tr>
+<tr><td>76-100</td>
+<td>Very Poor water quality</td>
+</tr>
+<tr><td>&gt; 100</td>
+<td>Unsuitable for drinking</td>
+</tr>
+</table>
+
+<br>
+<p font-size:5> ***In the observation table below TSS stands for Total Suspended Solids.***</p>
+<footer>
+copyright@MRRDGR        
+</footer>
+
+<p style="page-break-after: always;"></p>
+
+</page>
+
+
+<page>
+<br><br><br><br><br>
+<h1 style="text-align:center">Observation Table </h1>
+<table id="customers">
+    <thead >
+        <th>Date</th>
+        <th><pre>pH </pre></th>
+        <th>Dissolved O2</th>
+        <th>BOD</th>
+        <th>Calcium</th>
+        <th>Magnesium</th>
+        <th>Sulphates</th>
+        <th>Nitrates</th>
+        <!-- <th>Electrical conductivity</th> -->
+        <!-- <th>Total dissolved solids</th> -->
+        <th>TSS</th>
+        <!-- <th>Total Hardness</th> -->
+        <!-- <th>Total Alkalinity</th> -->
+        <th>Quality Index</th>
+
+    </thead>
+    <tbody>
+        
+        {% for item in obj %}
+
+        <tr>
+    
+            <td>{{ item.date }}</td>
+            <td>{{ item.ph_val }}</td>
+            <td>{{ item.dissolved_oxygen }}</td>
+            <td>{{ item.biological_oxygen_demand }}</td>
+            <td>{{ item.calcium }}</td>
+            <td>{{ item.magnesium }}</td>
+            <td>{{ item.sulphate }}</td>
+            <td>{{ item.nitrate }}</td>
+            <!-- <td>{{ item.electrical_conductivity }}</td> -->
+            <!-- <td>{{ item.total_dissolved_solids }}</td> -->
+            <td>{{ item.total_suspended_solids }}</td>
+            <!-- <td>{{ item.total_hardness }}</td> -->
+            <!-- <td>{{ item.total_alkalinity }}</td> -->
+            {% if item.quality_index < 150 %}
+            <td style="background-color:green">{{ item.quality_index }}</td>
+            {% else %}
+            <td style="background-color:red" >{{ item.quality_index }}</td>
+            {% endif %}
+
+
+        </tr>
+        
+         {% endfor %}   
+        
+    </tbody>       
+            
+</table>
+<br>
+<br>
+
+
+
+<p style="page-break-after: always;"></p>
+</page>
+
+<page>
+
+
+<header>
+<img src="{% static "header/logo.png" %}" width="30" height="30" alt="img">
+</header>
+
+
+
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<h1 style="text-align:center">Graphical View</h1>
+
+<br>
+<br>
+<br>
+<br>
+
+<img src= "{% static "chart.png" %}" alt="img" >
+
+
+
+<p>The above graph represents the Water Quality Index of water body over the years.</p>
+
+<footer>
+copyright@MRRDGR        
+</footer>
+
+</page>
+
+
+
+
+
+</body>
+</html>

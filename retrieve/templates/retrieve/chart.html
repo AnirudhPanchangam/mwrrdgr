@@ -1,0 +1,33 @@
+{% extends "login/header.html" %}
+{% block content %}
+<style type="text/css">
+.responsive-object {
+  position: relative;
+  padding-bottom: 67.5%;
+  height: 50;
+  margin: 10px 0;
+  
+}
+.responsive-object iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+</style>
+
+<br>
+<br>
+<br>
+<!-- Don't forget the "|safe"! -->
+<div class = "col-sm-6">
+<div class="responsive-object">
+   <iframe type="image/svg+xml" src= {{ chart|safe }}>
+</div>  
+</div>
+
+
+{% endblock %}
