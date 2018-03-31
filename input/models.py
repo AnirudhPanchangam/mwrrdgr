@@ -6,9 +6,9 @@ from datetime import date
 
 lab_choices = (
 
-		('L1','Lab 1'),
-		('L2','Lab 2'),
-		('L3','Lab 3'),
+		('lab1','Lab 1'),
+		('lab2','Lab 2'),
+		('lab3','Lab 3'),
 
 	)
 
@@ -124,6 +124,7 @@ class WaterData(models.Model):
 	lon = models.FloatField(default = 78.123445)
 	user = models.ManyToManyField(User)
 	laboratory = models.CharField(max_length= 5,choices = lab_choices,default = 'L1')
+	status = models.CharField(max_length = 140,default = 'un-usable')
 	
 	date = models.DateField(default = date.today)
 
@@ -185,7 +186,8 @@ class WaterDataTemp(models.Model):
 	laboratory = models.CharField(max_length = 5,choices = lab_choices,default = 'L1')
 	flag = models.CharField(max_length = 1,choices = (('1','1'),('0','0')))
 	date = models.DateField(default = date.today)
-
+	status = models.CharField(max_length = 140,default = 'un-usable')
+	reval_flag = models.CharField(max_length = 1,choices = (('1','1'),('0','0')),null = True)
 
 # class Approve(models.Model):
 # 	user = models.ForeignKey(User,on_delete = models.CASCADE)

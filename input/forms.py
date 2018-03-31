@@ -79,7 +79,7 @@ class WaterDataForm(forms.Form):
 
 	water_body_name = forms.CharField(max_length = 140)
 	lat = forms.FloatField()
-	lon = forms.FloatField()
-	laboratory = forms.ChoiceField(choices = [['L1','Lab 1'],['L2','Lab 2'],['L3','Lab 3']])
+	lng = forms.FloatField()
+	laboratory = forms.ChoiceField(choices = [['lab1','Lab 1'],['lab2','Lab 2'],['lab3','Lab 3']])
 	
 	date = forms.DateField(widget = forms.widgets.SelectDateWidget())

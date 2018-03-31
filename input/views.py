@@ -11,7 +11,7 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 import pygal
-from input.models import SurfaceWaterData,WaterData
+from input.models import SurfaceWaterData,WaterData,WaterDataTemp
 from input.forms import WaterForm,WaterDataForm
 from input.calc import calculateIndex
 from decimal import Decimal
@@ -219,9 +219,9 @@ def data_input(request):
 	if request.method == 'POST':
 		form = WaterDataForm(request.POST)
 		if form.is_valid():
-			lab_type = form.cleaned_data['lab_type']
-			if lab_type == 'L1':
-				temperautre = form.cleaned_data['temperautre']
+			lab_type = form.cleaned_data['laboratory']
+			if lab_type == 'lab1':
+				temperature = form.cleaned_data['temperature']
 				colour = form.cleaned_data['colour']
 				odour = form.cleaned_data['odour']
 				electrical_conductivity = form.cleaned_data['electrical_conductivity']
@@ -234,7 +234,7 @@ def data_input(request):
 				
 				wd = WaterDataTemp()
 				
-				wd.temperautre = temperautre
+				wd.temperature = temperature
 				wd.colour = colour
 				wd.electrical_conductivity = electrical_conductivity
 				wd.odour
@@ -244,14 +244,48 @@ def data_input(request):
 				wd.date = date
 				wd.lat = lat
 				wd.lng = lng
+				wd.flag = 1
 
+				dict_of_params = {
+								'ph_val':ph_val,
+								'electrical_conductivity':electrical_conductivity,
+								'dissolved_oxygen':dissolved_oxygen,
+								# 'colour':colour,
+								# 'odour':odour,
+								# 'temperature':temperature,
+								# 'total_dissolved_solids':total_dissolved_solids,
+								# 'total_alkalinity':total_alkalinity,
+								# 'total_hardness':total_hardness,
+								# 'total_suspended_solids':total_suspended_solids,
+								# 'calcium':calcium,
+								# 'magnesium':magnesium,
+								# 'chlorides':chlorides,
+								# 'nitrate':nitrate,
+								# 'sulphate':sulphate,
+								# 'biological_oxygen_demand':biological_oxygen_demand,
+
+
+
+							}
+
+				index = calculateIndex(dict_of_params)
+				wd.quality_index = index
 				user = request.user
-				wd.user.add(user)
+				if index <50:
+					status = "Potable"
+
+				elif index >= 50 and index < 100:
+					status = "Agricultural"
+
+				elif index >= 100:
+					status = "Un-useable" 
+				
+				wd.status = status
 				wd.save()
+				wd.user.add(user)
 
-
-			if lab_type == 'L2':
-				temperautre = form.cleaned_data['temperautre']
+			if lab_type == 'lab2':
+				temperature = form.cleaned_data['temperature']
 				electrical_conductivity = form.cleaned_data['electrical_conductivity']
 				ph_val = form.cleaned_data['ph_val']
 				dissolved_oxygen = form.cleaned_data['dissolved_oxygen']
@@ -281,9 +315,37 @@ def data_input(request):
 				lat = form.cleaned_data['lat']
 				lng = form.cleaned_data['lng']
 
-				wd = WaterDataTemp()
+				dict_of_params = {
+				'ph_val':ph_val,
+				'electrical_conductivity':electrical_conductivity,
+				'dissolved_oxygen':dissolved_oxygen,
+				# 'total_dissolved_solids':total_dissolved_solids,
+				# 'total_alkalinity':total_alkalinity,
+				# 'total_hardness':total_hardness,
+				# 'total_suspended_solids':total_suspended_solids,
+				'calcium':calcium,
+				'magnesium':magnesium,
+				'chlorides':chlorides,
+				'nitrate':nitrate,
+				'sulphate':sulphate,
+				# 'biological_oxygen_demand':biological_oxygen_demand,
+				}
 
-				wd.temperautre = temperautre
+
+				wd = WaterDataTemp()
+				index = calculateIndex(dict_of_params)
+				if index <50:
+					status = "Potable"
+
+				elif index >= 50 and index < 100:
+					status = "Agricultural"
+
+				elif index >= 100:
+					status = "Un-useable"
+				wd.status = status
+				wd.quality_index = index
+
+				wd.temperature = temperature
 				wd.electrical_conductivity = electrical_conductivity
 				wd.ph_val = ph_val
 				wd.dissolved_oxygen = dissolved_oxygen
@@ -308,18 +370,19 @@ def data_input(request):
 				wd.coliform = total_coliform
 				wd.fecal_coliform = fecal_coliform
 				wd.e_coliform = e_coliform
-
+				wd.water_body_name = form.cleaned_data['water_body_name']
 				wd.date = date
 				wd.lat = lat
 				wd.lng = lng
+				wd.flag = 1
 
 				user = request.user
-				wd.user.add(user)
+
 				wd.save()
+				wd.user.add(user)
 
-
-			if lab_type == 'L3':
-				temperautre = form.cleaned_data['temperautre']
+			if lab_type == 'lab3':
+				temperature = form.cleaned_data['temperature']
 				electrical_conductivity = form.cleaned_data['electrical_conductivity']
 				ph_val = form.cleaned_data['ph_val']
 				dissolved_oxygen = form.cleaned_data['dissolved_oxygen']
@@ -356,13 +419,43 @@ def data_input(request):
 				lead = form.cleaned_data['lead']
 				zinc = form.cleaned_data['zinc']
 
+				wd.water_body_name = form.cleaned_data['water_body_name']
+
+				dict_of_params = {
+				'ph_val':ph_val,
+				'electrical_conductivity':electrical_conductivity,
+				'dissolved_oxygen':dissolved_oxygen,
+				'total_dissolved_solids':total_dissolved_solids,
+				# 'total_alkalinity':total_alkalinity,
+				# 'total_hardness':total_hardness,
+				# 'total_suspended_solids':total_suspended_solids,
+				'calcium':calcium,
+				'magnesium':magnesium,
+				'chlorides':chlorides,
+				'nitrate':nitrate,
+				'sulphate':sulphate,
+				'biological_oxygen_demand':biological_oxygen_demand,
+				}				
+
 				date = form.cleaned_data['date']
 				lat = form.cleaned_data['lat']
 				lng = form.cleaned_data['lng']
 
 				wd = WaterDataTemp()
+			
+				index = calculateIndex(dict_of_params)
+				if index <50:
+					status = "Potable"
 
-				wd.temperautre = temperautre
+				elif index >= 50 and index < 100:
+					status = "Agricultural"
+
+				elif index >= 100:
+					status = "Un-useable"
+				wd.status = status
+				wd.quality_index = index
+
+				wd.temperature = temperature
 				wd.electrical_conductivity = electrical_conductivity
 				wd.ph_val = ph_val
 				wd.dissolved_oxygen = dissolved_oxygen
@@ -399,18 +492,27 @@ def data_input(request):
 				wd.lead = lead
 				wd.zinc = zinc
 
+				wd.water_body_name = form.cleaned_data['water_body_name']
+
 				wd.date = date
 				wd.lat = lat
 				wd.lng = lng
-
+				wd.flag = 1
 				user = request.user
-				wd.user.add(user)
+				
 				wd.save()
-
-		return redirect('/')
+				wd.user.add(user)
+			return redirect('/')
+		print(form.errors)
+		return redirect('input/get')
 
 
 
 
 	form = WaterDataForm()
-	return render(request,'input/form1.html',{"form":form})
+
+	return render(request,'input/param_all.html',{"form":form}) #param_all
+
+
+
+

@@ -1,0 +1,60 @@
+
+.water-params-form .param-group
+{
+	padding : 3px 1px;
+	width: 95%;
+}
+.water-params-form .params {
+  display: none;
+  height:0;
+  width: 100%
+}
+
+.water-params-form #water_body_name {
+	display: block;
+	height: auto;
+}
+
+.water-params-form.lab1 #temperature,
+.water-params-form.lab1 #Colour,
+.water-params-form.lab1 #odour,
+.water-params-form.lab1 #electrical_conductivity,
+.water-params-form.lab1 #ph_val,
+.water-params-form.lab1 #dissolved_oxygen {
+  display: block;
+  height: auto;
+}
+
+.water-params-form.lab2 #COD,
+.water-params-form.lab2 #EC,
+.water-params-form.lab2 #FCO,
+.water-params-form.lab2 #Fl,
+.water-params-form.lab2 #Ir,
+.water-params-form.lab2 #Po,
+.water-params-form.lab2 #TCO,
+.water-params-form.lab2 #Tpc,
+.water-params-form.lab2 #bicarbonate,
+.water-params-form.lab2 #biological_oxygen_demand,
+.water-params-form.lab2 #boron,
+.water-params-form.lab2 #calcium,
+.water-params-form.lab2 #calcium,
+.water-params-form.lab2 #carbonate,
+.water-params-form.lab2 #chlorides,
+.water-params-form.lab2 #dissolved_oxygen,
+.water-params-form.lab2 #electrical_conductivity,
+.water-params-form.lab2 #magnesium,
+.water-params-form.lab2 #nitratre,
+.water-params-form.lab2 #nitrite,
+.water-params-form.lab2 #ph_val,
+.water-params-form.lab2 #si,
+.water-params-form.lab2 #sodium,
+.water-params-form.lab2 #sulphate,
+.water-params-form.lab2 #temperature {
+  display: block;
+  height: auto;
+}
+
+ .water-params-form.lab3 .params {
+	display:block;
+   height: auto;
+}

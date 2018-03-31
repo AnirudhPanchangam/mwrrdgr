@@ -1,0 +1,26 @@
+{% extends "login/header.html" %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% if approval_list %}
+    <!-- <ul> -->
+   <div class="table-responsive">
+<table class="table table-sm table-dark">
+    
+    <tr><th>Name of Water Body</th><th>User who uploaded</th><th>Date of upload</th></tr>
+    {% for approval in approval_list %}
+        <tr><td><a href="/approval/{{ approval.id }}/reval">{{ approval.water_body_name }} </a></td><td> {{ approval.user.all.0 }} </td><td>{{ approval.date }}</a><td></tr>
+    {% endfor %}  
+    
+    </table>
+{% else %}
+    <p>No pending approvals.</p>
+{% endif %}
+</div>
+
+{% endblock %}

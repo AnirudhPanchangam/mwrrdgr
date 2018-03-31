@@ -5,7 +5,7 @@ standards = {
 		'ph_val':[8.5,0.2190],
 		'dissolved_oxygen':[5,0.3723],		
 		'biological_oxygen_demand':[5,0.3723],
-
+		# 'colour':[5,]
 		'electrical_conductivity':[300,0.371],
 		'total_dissolved_solids':[500,0.0037],
 		'total_alkalinity':[120,0.0155],
@@ -89,7 +89,7 @@ def calculateIndex(dict_of_params):
 	print(qn)
 	wn = 0
 	numerator = 0
-	for key in standards:
+	for key in dict_of_params:
 		wn = wn + standards[key][1]
 		
 		numerator =numerator +( standards[key][1] * qn[key] )
