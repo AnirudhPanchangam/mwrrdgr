@@ -17,6 +17,78 @@
 </div>
 <input type="submit" name="submit" class="btn btn-primary">
 </form>
+
+
+
+
+ <style>
+      .map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:50%;
+    width:50%;
+    position:relative;
+}
+    </style>
+ 
+
+    
+    <div id="map" class="map-responsive"></div>
+    <br>
+    <br>
+   
+      <!-- <div id="lat" ></div>
+	  <div id="lng"></div> -->
+
+    <script>
+    	function initMap() {
+            var lt=19.46663964197213;
+            var lg=76.08590591555696;
+
+            var myLatlng = new google.maps.LatLng(lt,lg);
+            var mapOptions = {
+                center: new google.maps.LatLng(lt,lg),
+                zoom: 6,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'),mapOptions);   
+           var marker;
+			function placeMarker(location) {
+			  if ( marker ) {
+			    marker.setPosition(location);
+			  } else {
+			    marker = new google.maps.Marker({
+			      position: location,
+			      map: map
+			    });
+			  }
+			  var lat = marker.getPosition().lat();
+			  var lng = marker.getPosition().lng();
+			  document.getElementById('lat').value = lat;
+			  document.getElementById('lon').value = lng;
+			}
+			google.maps.event.addListener(map, 'click', function(event) {
+			  placeMarker(event.latLng);
+			  
+			});   
+			google.maps.event.addDomListener(window, "resize", function() {
+  			 var center = map.getCenter();
+   			google.maps.event.trigger(map, "resize");
+  			 map.setCenter(center);
+  			});
+  		}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaEtNXNEf38c-QP-H-SRZaK38prQVCHt0&callback=initMap">
+    </script>
+    
 </div>
 
 {%endblock%}

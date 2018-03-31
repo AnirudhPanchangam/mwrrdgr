@@ -267,7 +267,7 @@ def data_input(request):
 
 
 							}
-
+				print(dict_of_params)
 				index = calculateIndex(dict_of_params)
 				wd.quality_index = index
 				user = request.user
@@ -331,7 +331,7 @@ def data_input(request):
 				# 'biological_oxygen_demand':biological_oxygen_demand,
 				}
 
-
+				print(dict_of_params)
 				wd = WaterDataTemp()
 				index = calculateIndex(dict_of_params)
 				if index <50:
@@ -436,7 +436,7 @@ def data_input(request):
 				'sulphate':sulphate,
 				'biological_oxygen_demand':biological_oxygen_demand,
 				}				
-
+				print(dict_of_params)
 				date = form.cleaned_data['date']
 				lat = form.cleaned_data['lat']
 				lng = form.cleaned_data['lng']
@@ -502,9 +502,12 @@ def data_input(request):
 				
 				wd.save()
 				wd.user.add(user)
-			return redirect('/')
-		print(form.errors)
-		return redirect('input/get')
+
+		f = form.cleaned_data	
+		return render(request,'input/param_all.html',{"view":True,"form":form,'f':f})
+		# print(form.errors)
+		# # form = WaterDataForm()
+		# return render(request,'input/param_all.html',{"view":False,"form":form})
 
 
 

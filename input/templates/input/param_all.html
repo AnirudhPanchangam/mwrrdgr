@@ -8,6 +8,7 @@
 
 	</head>
 
+
 {% block content %}
 <!-- <script>
     	function initMap() {
@@ -56,14 +57,13 @@
 <br>
 <br>
 <br>
-<br>
 <div class="container-fluid">
 	<div class="water-lab-select row justify-content-center">
-	<form action = ""  method='POST'>{% csrf_token %}
+	<form action = "/input/get/"  method='POST'>{% csrf_token %}
 	<center>
-	<h2 class="display-4" align='center'>Water Quality Parameters </h2>
+	<p class="display-6" align='center'>Water Quality Parameters </p>
  <div class="btn-group">
-	<select id="choose-laboratoty-type" name="laboratory">
+	<select id="choose-laboratoty-type" name="laboratory" value="{{ f.laboratory }}">
 	<option value="lab1" selected>Level-I Laboratory</option>
 	<option value="lab2">Level-II Laboratory</option>
 	<option value="lab3">Level-III Laboratory</option>
@@ -78,156 +78,156 @@
 	<div class="water-params-form lab1 row justify-content-center">
 	<center>
 	<div class="param-group">
-	<input type="text" id="temperature" class="params param22 params_temperature"  aria-describedby="param22" placeholder="Temperature"  name="temperature" size="30" required>
+	<input type="text" id="temperature" class="params param22 params_temperature"  aria-describedby="param22" placeholder="Temperature"  name="temperature" size="30" value = "{{ f.temperature }}" required>
     </div>
 
 	<div class="param-group">
-	<input type="text" id="Color" class="params params_color"  aria-describedby="param22" placeholder="Color"  name="color" size="30" required>
+	<input type="text" id="Color" class="params params_color"  aria-describedby="param22" placeholder="Colour"  name="colour" value="{{ f.colour }}" size="30" required>
     </div>
 
 	<div class="param-group">
-	<input type="text" id="odour" class="params params_odour"  aria-describedby="param22" placeholder="Odour"  name="odour" size="30" required>
+	<input type="text" id="odour" class="params params_odour"  aria-describedby="param22" placeholder="Odour"  name="odour" value="{{ f.odour }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="text" id="electrical_conductivity" class="params param3 params_electrical_conductivity"  aria-describedby="param3" placeholder="Electrical Conductivity(mhos/cm)" name="electrical_conductivity" size="30" required>
+	<input type="text" id="electrical_conductivity" class="params param3 params_electrical_conductivity"  aria-describedby="param3" placeholder="Electrical Conductivity(mhos/cm)" name="electrical_conductivity" value="{{ f.electrical_conductivity }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="number" min="0" max="14" id="ph_val" class="params param2 params_ph_val"  aria-describedby="param2" placeholder="pH Value"  name="ph_val" size="30" required>
+	<input type="number" min="0" max="14" id="ph_val" class="params param2 params_ph_val"  aria-describedby="param2" placeholder="pH Value"  name="ph_val" value="{{ f.ph_val }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="text" id="dissolved_oxygen" class="params param1 params_dissolved_oxygen"  aria-describedby="param1" placeholder="Dissolved Oxygen(mg/l)" name="dissolved_oxygen" size="30" required>
+	<input type="text" id="dissolved_oxygen" class="params param1 params_dissolved_oxygen"  aria-describedby="param1" placeholder="Dissolved Oxygen(mg/l)" name="dissolved_oxygen" value="{{ f.dissolved_oxygen }}" size="30" required>
     </div>
 	
 	<!-- <div class="param-group">
-	<input type="text" id="electrical_conductivity" class="params param3 params_electrical_conductivity"  aria-describedby="param3" placeholder="Electrical Conductivity(mhos/cm)" name="electrical_conductivity" size="30" required>
+	<input type="text" id="electrical_conductivity" class="params param3 params_electrical_conductivity"  aria-describedby="param3" placeholder="Electrical Conductivity(mhos/cm)" name="electrical_conductivity" value="{{ f.electrical_conductivity }}" size="30" required>
     </div> -->
 	 
 	<div class="param-group">
-	<input type="text" id="biological_oxygen_demand" class="params param13 params_biological_oxygen_demand"  aria-describedby="param13" placeholder="Biological Oxygen Demand(mg/l)" name="biological_oxygen_demand" size="30" required>
+	<input type="text" id="biological_oxygen_demand" class="params param13 params_biological_oxygen_demand"  aria-describedby="param13" placeholder="Biological Oxygen Demand(mg/l)" name="biological_oxygen_demand" value="{{ f.biological_oxygen_demand }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-    <input type="text" id="COD" class="params param18 params_COD"  aria-describedby="param18" placeholder="Chemical Oxygen Demand" name="chemical_oxygen_demand" size="30" required>
+    <input type="text" id="COD" class="params param18 params_COD"  aria-describedby="param18" placeholder="Chemical Oxygen Demand" name="chemical_oxygen_demand" value="{{ f.chemical_oxygen_demand }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-    <input type="text" id="sodium" class="params param24 params_sodium"  aria-describedby="param24" placeholder="Sodium"  name="sodium" size="30" required>
+    <input type="text" id="sodium" class="params param24 params_sodium"  aria-describedby="param24" placeholder="Sodium"  name="sodium" value="{{ f.sodium }}" size="30" required>
     </div>
 	
-	<!-- <div class="param-group">
-	<input type="text" id="calcium" class="params param8 params_calcium"  aria-describedby="param8" placeholder="Calcium(mg/l)"  name="calcium" size="30" required>
-    </div> -->
-	
 	<div class="param-group">
-	<input type="text" id="magnesium" class="params param9 params_magnesium"  aria-describedby="param9" placeholder="Magnesium(mg/l)" name="magnesium" size="30" required>
+	<input type="text" id="calcium" class="params param8 params_calcium"  aria-describedby="param8" placeholder="Calcium(mg/l)"  name="calcium" value="{{ f.calcium }}" size="30" required>
     </div>
 	
-	<!-- <div class="param-group">
-	<input type="text" id="calcium" class="params param25 params_calcium"  aria-describedby="param25" placeholder="Potassium(mg/l)" name="calcium" size="30" required>
-    </div> -->
+	<div class="param-group">
+	<input type="text" id="magnesium" class="params param9 params_magnesium"  aria-describedby="param9" placeholder="Magnesium(mg/l)" name="magnesium" value="{{ f.magnesium }}" size="30" required>
+    </div>
 	
 	<div class="param-group">
-	<input type="text" id="Ir" class="params param15 params_Ir"  aria-describedby="param15" placeholder="Iron (mg/l) (max)" name="iron" size="30" required>
+	<input type="text" id="potassium" class="params param25 params_calcium"  aria-describedby="param25" placeholder="Potassium(mg/l)" name="potassium" value="{{ f.potassium }}" size="30" required>
+    </div>
+	
+	<div class="param-group">
+	<input type="text" id="Ir" class="params param15 params_Ir"  aria-describedby="param15" placeholder="Iron (mg/l) (max)" name="iron" value="{{ f.iron }}" size="30" required>
    </div>
 	
 	<div class="param-group">
-	<input type="text" id="boron" class="params param26 params_boron"  aria-describedby="param26" placeholder="Boron(mg/l)" name="boron" size="30" required>
+	<input type="text" id="boron" class="params param26 params_boron"  aria-describedby="param26" placeholder="Boron(mg/l)" name="boron" value="{{ f.boron }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="text" id="carbonate" class="params param27 params_carbonate"  aria-describedby="param27" placeholder="Carbonate(mg/l)" name="carbonate" size="30" required>
+	<input type="text" id="carbonate" class="params param27 params_carbonate"  aria-describedby="param27" placeholder="Carbonate(mg/l)" name="carbonate" value="{{ f.carbonate }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="text" id="bicarbonate" class="params param25 params_bicarbonate"  aria-describedby="param28" placeholder="Bicarbonate(mg/l)" name="bicarbonate" size="30" required>
+	<input type="text" id="bicarbonate" class="params param25 params_bicarbonate"  aria-describedby="param28" placeholder="Bicarbonate(mg/l)" name="bicarbonate" value="{{ f.bicarbonate }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-    <input type="text" id="Fl" class="params param16 params_Fl"  aria-describedby="param16" placeholder="Fluorides (mg/l)" name="fluorine" size="30" required>
+    <input type="text" id="Fl" class="params param16 params_Fl"  aria-describedby="param16" placeholder="Fluorides (mg/l)" name="fluorine" value="{{ f.fluorine }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="text" id="chlorides" class="params param10 params_chlorides"  aria-describedby="param10" placeholder="Chlorides(mg/l)" name="chloride" size="30" required>
+	<input type="text" id="chlorides" class="params param10 params_chlorides"  aria-describedby="param10" placeholder="Chlorides(mg/l)" name="chlorides" value="{{ f.chlorides }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="text" id="sulphate" class="params param12 params_sulphate"  aria-describedby="param12" placeholder="Sulphates(mg/l)" name="sulphates" size="30" required>
+	<input type="text" id="sulphate" class="params param12 params_sulphate"  aria-describedby="param12" placeholder="Sulphates(mg/l)" name="sulphate" value="{{ f.sulphate }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="text" id="nitratre" class="params param11 params_nitratre"  aria-describedby="param11" placeholder="Nitrates(mg/l)" name="nitrate" size="30" required>
+	<input type="text" id="nitratre" class="params param11 params_nitratre"  aria-describedby="param11" placeholder="Nitrates(mg/l)" name="nitrate" value="{{ f.nitrate }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="text" id="nitrite" class="params para28 params_nitrite"  aria-describedby="param28" placeholder="Nitrites(mg/l)" name="nitrite" size="30" required>
+	<input type="text" id="nitrite" class="params para28 params_nitrite"  aria-describedby="param28" placeholder="Nitrites(mg/l)" name="nitrite" value="{{ f.nitrite }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="text" id="si" class="params param29 params_si"  aria-describedby="param29" placeholder="Silicate(mg/l)" name="silicate" size="30" required>
+	<input type="text" id="si" class="params param29 params_si"  aria-describedby="param29" placeholder="Silicate(mg/l)" name="silicate" value="{{ f.silicate }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="text" id="Po" class="params param30 params_Po"  aria-describedby="param30" placeholder="Phosphate(mg/l)" name="potassium" size="30" required>
+	<input type="text" id="Po" class="params param30 params_Po"  aria-describedby="param30" placeholder="Phosphate(mg/l)" name="potassium" value="{{ f.potassium }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-	<input type="text" id="Tpc" class="params param31 params_Tpc"  aria-describedby="param31" placeholder="Total Plate Count" name="total_plate_count" size="30" required>
+	<input type="text" id="Tpc" class="params param31 params_Tpc"  aria-describedby="param31" placeholder="Total Plate Count" name="total_plate_count" value="{{ f.total_plate_count }}" size="30" required>
     </div>
 	
 <!-- 	<div class="param-group">
-	<input type="text" id="nitratre" class="params param11 params_nitratre"  aria-describedby="param11" placeholder="Nitrates(mg/l)" name="nitratre" size="30" required>
+	<input type="text" id="nitratre" class="params param11 params_nitratre"  aria-describedby="param11" placeholder="Nitrates(mg/l)" name="nitratre" value="{{ f.nitratre }}" size="30" required>
     </div> -->
 	
 	<div class="param-group">
-    <input type="text" id="TCO" class="params param20 params_TCO"  aria-describedby="param20" placeholder="Total Coliform Organisms" name="total_coliform" size="30" required>
+    <input type="text" id="TCO" class="params param20 params_TCO"  aria-describedby="param20" placeholder="Total Coliform Organisms" name="total_coliform" value="{{ f.total_coliform }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-    <input type="text" id="FCO" class="params param32 params_FCO"  aria-describedby="param32" placeholder="Faecal Coliform Organisms" name="fecal_coliform" size="30" required>
+    <input type="text" id="FCO" class="params param32 params_FCO"  aria-describedby="param32" placeholder="Faecal Coliform Organisms" name="fecal_coliform" value="{{ f.fecal_coliform }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-    <input type="text" id="EC" class="params param33 params_EC"  aria-describedby="param33" placeholder="E.Coliform" name="e_coliform" size="30" required>
+    <input type="text" id="EC" class="params param33 params_EC"  aria-describedby="param33" placeholder="E.Coliform" name="e_coliform" value="{{ f.e_coliform }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-    <input type="text" id="TOC" class="params param34 params_TOC"  aria-describedby="param34" placeholder="Total Organic Carbon" name="total_organic_carbon" size="30" required>
+    <input type="text" id="TOC" class="params param34 params_TOC"  aria-describedby="param34" placeholder="Total Organic Carbon" name="total_organic_carbon" value="{{ f.total_organic_carbon }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-    <input type="text" id="TKN" class="params param35 params_TKN"  aria-describedby="param35" placeholder="Total Kjeldhal Nitrogen" name="total_kjeldhal_nitrogen" size="30" required>
+    <input type="text" id="TKN" class="params param35 params_TKN"  aria-describedby="param35" placeholder="Total Kjeldhal Nitrogen" name="total_kjeldhal_nitrogen" value="{{ f.total_kjeldhal_nitrogen }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-    <input type="text" id="AN" class="params param36 params_AN"  aria-describedby="param36" placeholder="Ammonia Nitrogen" name="ammi=onia_nitrogen" size="30" required>
+    <input type="text" id="AN" class="params param36 params_AN"  aria-describedby="param36" placeholder="Ammonia Nitrogen" name="ammonia_nitrogen" value="{{ f.ammonia_nitrogen }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-    <input type="text" id="CC" class="params param37 params_CC"  aria-describedby="param37" placeholder="Cyanide" name="arsenic" size="30" required>
+    <input type="text" id="CC" class="params param37 params_CC"  aria-describedby="param37" placeholder="Cyanide" name="arsenic" value="{{ f.arsenic }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-    <input type="text" id="Me" class="params param38 params_Me"  aria-describedby="param38" placeholder="Mercury" name="mercury" size="30" required>
+    <input type="text" id="Me" class="params param38 params_Me"  aria-describedby="param38" placeholder="Mercury" name="mercury" value="{{ f.mercury }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-    <input type="text" id="Ch" class="params param39 params_Ch"  aria-describedby="param39" placeholder="Chromium" name="chromium" size="30" required>
+    <input type="text" id="Ch" class="params param39 params_Ch"  aria-describedby="param39" placeholder="Chromium" name="chromium" value="{{ f.chromium }}" size="30" required>
     </div>
 	
 	<div class="param-group">
-   	<input type="text" id="Pb" class="params param17 params_Pb"  aria-describedby="param17" placeholder="Lead (mg/l)" name="lead" size="30" required>
+   	<input type="text" id="Pb" class="params param17 params_Pb"  aria-describedby="param17" placeholder="Lead (mg/l)" name="lead" value="{{ f.lead }}" size="30" required>
     </div>
 	
 	<div class="param-group">
     <div class="hidden">
-	<input type="text" id="Zn" class="params param40 params_Zn"  aria-describedby="param40" placeholder="Zinc (mg/l)" name="zinc" size="30" required>
+	<input type="text" id="Zn" class="params param40 params_Zn"  aria-describedby="param40" placeholder="Zinc (mg/l)" name="zinc" value="{{ f.zinc }}" size="30" required>
     </div></div>
 	
 	<div class="param-group">
-	<input type="text" id="water_body_name" class="params param40 params_water_body_name"  aria-describedby="param40" placeholder="Name of Waterbody" name="water_body_name" size="30" required>
+	<input type="text" id="water_body_name" class="params param40 params_water_body_name"  aria-describedby="param40" placeholder="Name of Waterbody" name="water_body_name" value="{{ f.water_body_name }}" size="30" required>
     </div>
 	
 	
@@ -246,23 +246,32 @@
       <!-- <div id="lat" ></div>
 	  <div id="lng"></div> -->
 	  <div class="param-group">
-     <b>Latitude:</b><input type="number" name="lat" id="lat" placeholder="Latitude" step="any">
+     <label>Latitude:</label><br/>
+     <input type="number" name="lat" value="{{ f.lat }}" id="lat" placeholder="Latitude" step="any">
 	 </div>
 	 <div class="param-group">
-     <b>Longitude:</b><input type="number" name="lng" id="lng" placeholder="Longitude" step="any">
+     <label>Longitude:</label><br/>
+     <input type="number" name="lng" value="{{ f.lng }}" id="lng" placeholder="Longitude" step="any">
 	 </div>
 	 
-	 
-		<div>
+	<div id="map" class="map-responsive"></div>
+    <br>
+    <br>
+	
+
+	<div>
 		 <input type="submit" class="btn btn-primary" align='center'></button>
 	</div>
 	</center>
+	</div>
+	</div>
 	</form>
 	</div>
 </div>
 
+
+
 <script type="text/javascript">
-$(function(){
 	function cleanRequiredFields(){
 		$(".water-params-form .params").each(function(){
 			var tf = parseInt($(this).css('height')) < 10;			
@@ -270,12 +279,72 @@ $(function(){
 		});
 	}
 
+	function enableEdit(){
+		$(".water-params-form .params").attr('disabled', false);
+	}
+
+	function disableEdit(){
+		$(".water-params-form .params").attr('disabled', true);
+	}
+
+$(function(){
+	
 	$("#choose-laboratoty-type").on('change', function() { 
 		$(".water-params-form").removeClass("lab1 lab2 lab3").addClass(this.value);
 		cleanRequiredFields();
 	});
 	cleanRequiredFields();
+
+	if(location.search.indexOf('view=true')>0){
+		disableEdit();
+	}
 });
+
+
 </script>
+
+<script  type="text/javascript">
+    	console.log("initmap tk be......");
+    	function initMap() {
+    		console.log("initmap caled...");
+            var lt= 19.46663964197213;
+            var lg= 76.08590591555696;
+
+            var myLatlng = new google.maps.LatLng(lt,lg);
+            var mapOptions = {
+                center: new google.maps.LatLng(lt,lg),
+                zoom: 6,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'),mapOptions);   
+           var marker;
+			function placeMarker(location) {
+			  if ( marker ) {
+			    marker.setPosition(location);
+			  } else {
+			    marker = new google.maps.Marker({
+			      position: location,
+			      map: map
+			    });
+			  }
+			  var lat = marker.getPosition().lat();
+			  var lng = marker.getPosition().lng();
+			  document.getElementById('lat').value = lat;
+			  document.getElementById('lng').value = lng;
+			}
+			google.maps.event.addListener(map, 'click', function(event) {
+			  placeMarker(event.latLng);
+			});   
+			google.maps.event.addDomListener(window, "resize", function() {
+  			 var center = map.getCenter();
+   			google.maps.event.trigger(map, "resize");
+  			 map.setCenter(center);
+  			});
+  		}
+    </script>
+    <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaEtNXNEf38c-QP-H-SRZaK38prQVCHt0&callback=initMap">
+    </script>
 
 {% endblock %}

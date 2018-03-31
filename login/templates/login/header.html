@@ -26,7 +26,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav" style="color:black">
       <a class="nav-item nav-link" href="/retrieve/view">View Data <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">View in Maps</a>
+      <!-- <a class="nav-item nav-link" href="#">View in Maps</a> -->
       
       {% if user.is_authenticated  %}
       <a class="nav-item nav-link" href="/input/in/">Upload Data</a>
@@ -36,6 +36,9 @@
       <a class="nav-item nav-link" href="/login/">Login</a>
       <a class="nav-item nav-link" href="/login/register/">Register</a>
       {% endif %}
+      <a class="nav-item nav-link" href="/retrieve/chart">Charts</a>
+      <a class="nav-item nav-link" href="/retrieve/pdf">generate PDF</a>
+
     </div>
   </div>
 
